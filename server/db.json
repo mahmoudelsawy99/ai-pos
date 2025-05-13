@@ -1,0 +1,132 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "admin123",
+      "role": "admin",
+      "name": "Admin User",
+      "email": "admin@pos.com"
+    },
+    {
+      "id": 2,
+      "username": "cashier",
+      "password": "cashier123",
+      "role": "cashier",
+      "name": "Cashier User",
+      "email": "cashier@pos.com"
+    }
+  ],
+
+    "products": [
+      {
+        "id": 1,
+        "name": "Samsung Galaxy A35",
+        "price": 17299.00,
+        "category": "Smartphones",
+        "stock": 50,
+        "barcode": "8806095531234",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 2,
+        "name": "Samsung Galaxy S23",
+        "price": 30999.00,
+        "category": "Smartphones",
+        "stock": 30,
+        "barcode": "8806094781234",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 3,
+        "name": "iPhone 16",
+        "price": 41999.00,
+        "category": "Smartphones",
+        "stock": 20,
+        "barcode": "190199123456",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 4,
+        "name": "OPPO Reno12F 5G",
+        "price": 12999.00,
+        "category": "Smartphones",
+        "stock": 40,
+        "barcode": "6944284678901",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 5,
+        "name": "MacBook Air 13-inch",
+        "price": 38999.00,
+        "category": "Computing",
+        "stock": 15,
+        "barcode": "194252123456",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 6,
+        "name": "Vodafone 160 GB ",
+        "price": 200.00,
+        "category": "Data Packages",
+        "stock": 100,
+        "barcode": "8901234567890",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 7,
+        "name": "Apple Watch Series 9",
+        "price": 19999.00,
+        "category": "Wearables",
+        "stock": 25,
+        "barcode": "190199123457",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 8,
+        "name": "Samsung Galaxy A34 ",
+        "price": 14499.00,
+        "category": "Smartphones",
+        "stock": 35,
+        "barcode": "8806094781235",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      },
+      {
+        "id": 9,
+        "name": "Vodafone 4G SIM Card",
+        "price": 0.00,
+        "category": "SIM Cards",
+        "stock": 500,
+        "barcode": "8901234567891",
+        "image": "https://eshop.vodafone.com.eg/ecommerce/api/asset/content/1311208718.png?contextRequest=%7B%22forceCatalogForFetch%22:false,%22forceFilterByCatalogIncludeInheritance%22:false,%22forceFilterByCatalogExcludeInheritance%22:false,%22applicationId%22:%2201H5FECVAV4YWT0NGQKXEN1T51%22,%22tenantId%22:%225DF1363059675161A85F576D%22%7D"
+      }
+    ]
+  ,
+
+  "orders": [
+    {
+      "id": 1,
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 2,
+          "price": 2.99
+        }
+      ],
+      "total": 5.98,
+      "status": "completed",
+      "paymentMethod": "cash",
+      "cashierId": 2,
+      "date": "2024-05-11T10:00:00.000Z"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "1234567890",
+      "loyaltyPoints": 100
+    }
+  ]
+}

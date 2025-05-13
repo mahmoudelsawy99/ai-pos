@@ -1,0 +1,105 @@
+<!-- <div class="space-y-6">
+  <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Point of Sale</h1>
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+     <div class="lg:col-span-2">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-4">Products</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div *ngFor="let product of products" class="p-4 border rounded shadow flex flex-col items-center" style="height: 320px;">
+            <img src="../../../assets/img/download.jpeg" [alt]="product.name" class="w-24 h-24 object-cover rounded mb-2 bg-gray-200" />
+            <div class="font-bold text-lg mb-1">{{ product.name }}</div>
+            <div class="text-sm text-gray-500 mb-1">{{ product.category }}</div>
+            <div class="text-[rgb(230, 0, 0)] dark:text-indigo-400 font-bold mb-2">EGP {{ product.price }}</div>
+            <div class="text-xs text-gray-500 mb-2">Stock: {{ product.stock }}</div>
+            <button class="btn-primary bg-[rgb(230,0,0)] mt-2 w-full" (click)="addToCart(product)" style="transition: none;">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-1">
+      <div class="card">
+        <h2 class="text-xl font-semibold mb-4">Cart</h2>
+        <div class="space-y-4">
+          <div *ngFor="let item of cart">
+            <div class="flex justify-between items-center">
+              <span>{{ item.name }}</span>
+              <span class="font-semibold">EGP {{ (item.price * item.quantity).toFixed(2) }}</span>
+            </div>
+            <div class="flex items-center gap-2 mt-2">
+              <button (click)="decrement(item)" [disabled]="item.quantity <= 1" class="px-2 py-1 rounded bg-[rgb(230,0,0)] text-white text-lg font-bold" style="transition: none;">-</button>
+              <span class="px-2">{{ item.quantity }}</span>
+              <button (click)="increment(item)" class="px-2 py-1 rounded bg-[rgb(230,0,0)] text-white text-lg font-bold" style="transition: none;">+</button>
+              <button (click)="remove(item)" class="ml-4 px-2 py-1 rounded bg-[rgb(230,0,0)] text-white" title="Remove" style="transition: none;">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+          <div *ngIf="cart.length === 0" class="text-gray-500">Cart is empty</div>
+          <div class="font-bold mt-4">Total: EGP {{ getTotal() }}</div>
+          <button class="btn-primary w-full mt-2 bg-[rgb(230,0,0)] text-white" [disabled]="cart.length === 0" (click)="checkout()" style="transition: none;">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+<div class="min-h-screen flex flex-col items-center justify-center bg-gray-900 py-8">
+  <div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Product Grid -->
+    <div class="lg:col-span-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div *ngFor="let product of products" class="bg-white dark:bg-gray-800 rounded-lg shadow flex flex-col items-center p-4">
+          <img *ngIf="product.image" [src]="product.image" [alt]="product.name" class="w-40 h-40 object-contain rounded mb-2 bg-gray-200" onerror="this.src='assets/no-image.png'" />
+          <div class="font-bold text-lg text-gray-900 dark:text-white mb-1 text-center">{{ product.name }}</div>
+          <div class="text-[rgb(230,0,0)] font-bold text-xl mb-2">EGP {{ product.price }}</div>
+          <button class="w-full py-2 mt-auto rounded bg-[rgb(230,0,0)] text-white font-semibold" (click)="addToCart(product)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <!-- Cart Table -->
+    <div class="lg:col-span-1">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-4 flex flex-col h-full">
+        <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Cart</h2>
+        <table class="min-w-full mb-4">
+          <thead>
+            <tr class="bg-[rgb(230,0,0)] text-white">
+              <th class="px-2 py-2 text-left">Delete</th>
+              <th class="px-2 py-2 text-left">Product</th>
+              <th class="px-2 py-2 text-left">Quantity</th>
+              <th class="px-2 py-2 text-left">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cart">
+              <td class="px-2 py-2">
+                <button (click)="remove(item)" class="bg-[rgb(230,0,0)] text-white rounded p-1" title="Remove">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+              <td class="px-2 py-2 text-gray-900 dark:text-white">{{ item.name }}</td>
+              <td class="px-2 py-2">
+                <div class="flex items-center gap-2">
+                  <button (click)="decrement(item)" [disabled]="item.quantity <= 1" class="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-lg font-bold">-</button>
+                  <span class="px-2 text-gray-900 dark:text-white">{{ item.quantity }}</span>
+                  <button (click)="increment(item)" class="px-2 py-1 rounded bg-gray-200 dark:bg-gray-700 text-lg font-bold">+</button>
+                </div>
+              </td>
+              <td class="px-2 py-2 text-gray-900 dark:text-white">EGP {{ (item.price * item.quantity).toFixed(2) }}</td>
+            </tr>
+            <tr *ngIf="cart.length === 0">
+              <td colspan="4" class="text-center text-gray-500 py-4">Cart is empty</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="flex justify-between items-center font-bold text-lg text-gray-900 dark:text-white mb-4">
+          <span>Total:</span>
+          <span>EGP {{ getTotal() }}</span>
+        </div>
+        <button class="w-full py-2 rounded bg-[rgb(230,0,0)] text-white font-semibold" [disabled]="cart.length === 0" (click)="checkout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
