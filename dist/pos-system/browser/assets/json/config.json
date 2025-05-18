@@ -1,0 +1,44 @@
+{
+  "products": [
+    {
+      "name": "Xiaomi 14 Ultra",
+      "image": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-14-ultra-1.jpg",
+      "price": "16000000"
+    },
+    {
+      "name": "iPhone 15 Pro Max",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-15-pro-max-1.jpg",
+      "price": "23000000"
+    },
+    {
+      "name": "Samsung Galaxy S24 Ultra",
+      "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s24-ultra-5g-1.jpg",
+      "price": "21000000"
+    },
+    {
+      "name": "Realme 12 Pro+ 5G",
+      "image": "https://fdn2.gsmarena.com/vv/pics/realme/realme-12-pro-plus-1.jpg",
+      "price": "5900000"
+    },
+    {
+      "name": "OnePlus 12R",
+      "image": "https://fdn2.gsmarena.com/vv/pics/oneplus/oneplus-12r-1.jpg",
+      "price": "8500000"
+    },
+    {
+      "name": "iPad Pro 13 M4 (2024)",
+      "image": "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-13-m4-1.jpg",
+      "price": "20000000"
+    },
+    {
+      "name": "Samsung Galaxy Tab S9 FE",
+      "image": "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-tab-s9-fe-1.jpg",
+      "price": "8000000"
+    },
+    {
+      "name": "Xiaomi Pad 6",
+      "image": "https://fdn2.gsmarena.com/vv/pics/xiaomi/xiaomi-pad-6-1.jpg",
+      "price": "4900000"
+    }
+  ]
+}
