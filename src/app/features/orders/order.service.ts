@@ -1,18 +1,26 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, Inject } from '@angular/core';
+import { StateService, Order } from '@app/services/state.service';
 import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class OrderService {
-  private apiUrl = 'http://localhost:3000/orders';
+  constructor(@Inject(StateService) private state: StateService) {}
 
-  constructor(private http: HttpClient) {}
-
-  getOrders(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getOrders(): Observable<Order[]> {
+    return this.state.orders$;
   }
 
-  createOrder(order: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, order);
+  addOrder(order: Order): void {
+    this.state.addOrder(order);
+  }
+
+  updateOrder(order: Order): void {
+    this.state.updateOrder(order);
+  }
+
+  deleteOrder(id: number): void {
+    this.state.deleteOrder(id);
   }
 }

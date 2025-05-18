@@ -3,13 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslatePipe } from '../../../../core/pipes/translate.pipe';
 import { ProductService } from '../../../../core/services/product.service';
-
-interface Product {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-}
+import { Product } from '../../../../services/state.service';
 
 @Component({
   selector: 'app-products',
@@ -30,6 +24,7 @@ interface Product {
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">Name</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">Category</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">Price</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">Stock</th>
                 <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-white">Actions</th>
               </tr>
             </thead>
@@ -38,6 +33,7 @@ interface Product {
                 <td class="px-6 py-4 text-gray-900 dark:text-white">{{ product.name }}</td>
                 <td class="px-6 py-4 text-gray-900 dark:text-white">{{ product.category }}</td>
                 <td class="px-6 py-4 text-gray-900 dark:text-white">EGP {{ product.price }}</td>
+                <td class="px-6 py-4 text-gray-900 dark:text-white">{{ product.stock }}</td>
                 <td class="px-6 py-4 space-x-2">
                   <button class="text-blue-600 hover:text-blue-800 bg-[rgb(230,0,0)] text-white px-3 py-1 rounded" (click)="openEdit(product)" aria-label="Edit">
                     <i class="fas fa-pen"></i>
@@ -69,6 +65,10 @@ interface Product {
               <label class="block mb-1">Price</label>
               <input type="number" [(ngModel)]="modalProduct.price" name="price" class="w-full p-2 border rounded" required />
             </div>
+            <div class="mb-4">
+              <label class="block mb-1">Stock</label>
+              <input type="number" [(ngModel)]="modalProduct.stock" name="stock" class="w-full p-2 border rounded" required />
+            </div>
 
             <div class="flex justify-end gap-2">
               <button type="button" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" (click)="closeModal()">Cancel</button>
@@ -81,24 +81,21 @@ interface Product {
   `
 })
 export class ProductsComponent implements OnInit {
-
   showModal = false;
   editingProduct: Product | null = null;
   modalProduct: Product = this.getEmptyProduct();
-
-  constructor(productService: ProductService) {
-    this.productService = productService;
-  }
   products: Product[] = [];
-  productService: ProductService;
+
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((data: Product[]) => {
-      this.products = data;
+    this.productService.getProducts().subscribe((products: Product[]) => {
+      this.products = products;
     });
   }
+
   getEmptyProduct(): Product {
-    return { id: 0, name: '', category: '', price: 0 };
+    return { id: 0, name: '', category: '', price: 0, stock: 0 };
   }
 
   openAdd() {
@@ -115,19 +112,16 @@ export class ProductsComponent implements OnInit {
 
   saveProduct() {
     if (this.editingProduct) {
-      // Edit
-      const idx = this.products.findIndex(p => p.id === this.editingProduct!.id);
-      if (idx > -1) this.products[idx] = { ...this.modalProduct };
+      this.productService.updateProduct(this.modalProduct);
     } else {
-      // Add
       const newId = Math.max(...this.products.map(p => p.id), 0) + 1;
-      this.products.push({ ...this.modalProduct, id: newId });
+      this.productService.addProduct({ ...this.modalProduct, id: newId });
     }
     this.closeModal();
   }
 
   deleteProduct(id: number) {
-    this.products = this.products.filter(p => p.id !== id);
+    this.productService.deleteProduct(id);
   }
 
   closeModal() {

@@ -53,6 +53,11 @@ import { TranslatePipe } from '../pipes/translate.pipe';
             <i class="fas fa-cash-register mr-3"></i>
             POS
           </a>
+          <a routerLink="/orders" routerLinkActive="bg-gray-900 text-white"
+             class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors rounded-r-full mb-1 font-medium">
+            <i class="fas fa-cash-register mr-3"></i>
+            orders
+          </a>
           <a routerLink="/users" routerLinkActive="bg-gray-900 text-white"
              class="flex items-center px-6 py-3 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors rounded-r-full mb-1 font-medium">
             <i class="fas fa-users mr-3"></i>
@@ -64,7 +69,7 @@ import { TranslatePipe } from '../pipes/translate.pipe';
             {{ 'admin.reports' | translate }}
           </a>
         </nav>
-      </aside>    
+      </aside>
 
       <!-- Main Content -->
       <div class="flex-1 ml-72 min-h-screen flex flex-col">
