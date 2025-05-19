@@ -14,8 +14,8 @@ interface CartItem extends Product {
   template: `
     <div class="space-y-6">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Point of Sale</h1>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+      <div class="grid  grid-cols-3  gap-6">
+        <div class="card col-span-2    bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
           <h2 class="text-xl font-semibold mb-4">Products</h2>
           <div class="grid grid-cols-2 gap-4">
             <div *ngFor="let product of products"
@@ -41,7 +41,7 @@ interface CartItem extends Product {
             </div>
           </div>
         </div>
-        <div class="card bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <div class="card col-span-1 bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
           <h2 class="text-xl font-semibold mb-4">Current Order</h2>
           <div *ngIf="cart.length === 0" class="text-gray-500">No items in cart</div>
           <div *ngIf="cart.length > 0" class="space-y-4">
@@ -107,6 +107,9 @@ interface CartItem extends Product {
         </div>
       </div>
     </div>
+    <div [ngClass]="{'ml-64': !isSidebarCollapsed, 'ml-16': isSidebarCollapsed}" class="transition-all duration-300">
+      <!-- Main content here -->
+    </div>
   `
 })
 export class PosComponent implements OnInit {
@@ -115,6 +118,7 @@ export class PosComponent implements OnInit {
   cart: CartItem[] = [];
   selectedCustomerId: number | null = null;
   paymentMethod: 'cash' | 'card' = 'cash';
+  isSidebarCollapsed = false;
 
   constructor(@Inject(StateService) private state: StateService) {}
 
@@ -192,5 +196,9 @@ export class PosComponent implements OnInit {
     this.cart = [];
     this.selectedCustomerId = null;
     this.paymentMethod = 'cash';
+  }
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 }
